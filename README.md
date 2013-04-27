@@ -7,11 +7,13 @@ Files for compiling the Vanilla Linux kernel on the Netgear Stora.
 
 ### Install packages
 
+```sh
 echo "deb http://www.emdebian.org/debian squeeze main" >> /etc/apt/sources.list
 apt-get update
 apt-get install build-essential
 apt-get install emdebian-archive-keyring
 apt-get install g++-4.4-arm-linux-gnueabi gcc-4.4-arm-linux-gnueabi
+```
 
 ### Hack /usr/bin/dpkg-gencontrol
 
