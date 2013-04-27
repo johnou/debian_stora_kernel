@@ -3,9 +3,9 @@ debian_squeeze_stora_kernel
 
 Vanilla Linux kernel for Netgear Stora.
 
-NAND purposely disabled to prevent IO errors, would be nice if it worked.
-NOOP I/O scheduler.
-ZRAM enabled.
+* NAND purposely disabled to prevent IO errors, would be nice if it worked.
+* NOOP I/O scheduler.
+* ZRAM enabled.
 
 ## Build environment
 
@@ -46,7 +46,7 @@ apt-get install g++-4.4-arm-linux-gnueabi gcc-4.4-arm-linux-gnueabi
         field_transfer_single($pkg, $fields);
     }
 
-## Download and prepare Kernel sources
+## Download and prepare Linux Kernel sources
 
 ```sh
 wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.8.9.tar.xz
@@ -54,7 +54,7 @@ tar Jxf linux-3.8.9.tar.xz
 patch -p1 < 0001-Support-for-Netgear-Stora.patch
 ```
 
-### Apply aufs3 patches
+### Apply AUFS3 patches
 
 ```sh
 git clone git://aufs.git.sourceforge.net/gitroot/aufs/aufs3-standalone.git
@@ -63,13 +63,13 @@ git checkout origin/aufs3.8
 ..
 ```
 
-## Build Kernel
+## Build Linux Kernel
 
 ```sh
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- EXTRAVERSION=-huuhaa KDEB_PKGVERSION=1.0 KBUILD_DEBARCH=armel deb-pkg
 ```
 
-## Install Kernel (USB)
+## Install Linux Kernel (USB)
 
 ```sh
 dpkg -i linux-image-3.8.9-huuhaa_1.0_armel.deb
