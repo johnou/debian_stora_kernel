@@ -1,7 +1,7 @@
 debian_squeeze_stora_kernel
 ===========================
 
-Files for compiling the Vanilla Linux kernel on the Netgear Stora.
+Vanilla Linux kernel for Netgear Stora.
 
 ## Build environment
 
@@ -15,7 +15,7 @@ apt-get install emdebian-archive-keyring
 apt-get install g++-4.4-arm-linux-gnueabi gcc-4.4-arm-linux-gnueabi
 ```
 
-### Hack /usr/bin/dpkg-gencontrol
+### Remove architecture validation from /usr/bin/dpkg-gencontrol
 
     if (field_get_dep_type($_)) {
         # Delay the parsing until later
