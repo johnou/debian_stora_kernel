@@ -3,6 +3,10 @@ debian_squeeze_stora_kernel
 
 Vanilla Linux kernel for Netgear Stora.
 
+NAND purposely disabled to prevent IO errors, would be nice if it worked.
+NOOP I/O scheduler.
+ZRAM enabled.
+
 ## Build environment
 
 ### Install packages
