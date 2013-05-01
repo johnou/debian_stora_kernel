@@ -8,6 +8,22 @@ Vanilla Linux kernel for Netgear Stora.
 * NOOP I/O scheduler by default.
 * ZRAM module enabled.
 
+## Install Linux Kernel (USB)
+
+```sh
+dpkg -i linux-image-3.8.9-huuhaa_1.0_armel.deb
+mkimage -A arm -O linux -T kernel  -C none -a 0x00008000 -e 0x00008000 -n Linux-3.8.9-huuhaa -d /boot/vmlinuz-3.8.9-huuhaa /boot/uImage
+mkimage -A arm -O linux -T ramdisk -C gzip -a 0x00000000 -e 0x00000000 -n initramfs-3.8.9-huuhaa -d /boot/initrd.img-3.8.9-huuhaa /boot/uInitrd
+```
+
+## Accessing NAND
+
+```sh
+mkdir /mnt/nand
+ubiattach /dev/ubi_ctrl -m 2 -O 2048
+mount /dev/ubi0_0 /mnt/nand
+```
+
 ## Build environment
 
 ### Install packages
@@ -55,9 +71,9 @@ tar Jxf linux-3.8.9.tar.xz
 patch -p1 < 0001-Support-for-Netgear-Stora.patch
 ```
 
-### Apply patches
+## Apply patches
 
-## AUFS3
+### AUFS3
 
 ```sh
 git clone git://aufs.git.sourceforge.net/gitroot/aufs/aufs3-standalone.git
@@ -66,14 +82,14 @@ git checkout origin/aufs3.8
 ..
 ```
 
-## BFQ
+### BFQ
 
 ```sh
 patch -p1 < 0001-block-cgroups-kconfig-build-bits-for-BFQ-v6-3.8.patch
 patch -p1 < 0002-block-introduce-the-BFQ-v6-I-O-sched-for-3.8.patch
 ```
 
-## BFS and -ck patchsets
+### BFS and -ck patchsets
 
 ```sh
 patch -p1 < patch-3.8-ck1
@@ -83,20 +99,4 @@ patch -p1 < patch-3.8-ck1
 
 ```sh
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- EXTRAVERSION=-huuhaa KDEB_PKGVERSION=1.0 KBUILD_DEBARCH=armel deb-pkg
-```
-
-## Install Linux Kernel (USB)
-
-```sh
-dpkg -i linux-image-3.8.9-huuhaa_1.0_armel.deb
-mkimage -A arm -O linux -T kernel  -C none -a 0x00008000 -e 0x00008000 -n Linux-3.8.9-huuhaa -d /boot/vmlinuz-3.8.9-huuhaa /boot/uImage
-mkimage -A arm -O linux -T ramdisk -C gzip -a 0x00000000 -e 0x00000000 -n initramfs-3.8.9-huuhaa -d /boot/initrd.img-3.8.9-huuhaa /boot/uInitrd
-```
-
-### Accessing NAND
-
-```sh
-mkdir /mnt/nand
-ubiattach /dev/ubi_ctrl -m 2 -O 2048
-mount /dev/ubi0_0 /mnt/nand
 ```
