@@ -1,7 +1,7 @@
 debian_squeeze_stora_kernel
 ===========================
 
-Vanilla Linux kernel for Netgear Stora MS2110.
+Linux kernel for Netgear Stora MS2110.
 
 * AUFS3 support.
 * BFS and -ck patchsets for linux-3.8
