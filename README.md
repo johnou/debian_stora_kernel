@@ -1,7 +1,7 @@
 debian_squeeze_stora_kernel
 ===========================
 
-Vanilla Linux kernel for Netgear Stora.
+Vanilla Linux kernel for Netgear Stora MS2110.
 
 * AUFS3 support.
 * BFS and -ck patchsets for linux-3.8
@@ -9,7 +9,7 @@ Vanilla Linux kernel for Netgear Stora.
 * NOOP I/O scheduler by default.
 * ZRAM module enabled.
 
-## Install Linux Kernel (USB)
+## Install Linux kernel (USB)
 
 ```sh
 dpkg -i linux-image-3.8.9-huuhaa_1.0_armel.deb
@@ -49,7 +49,7 @@ apt-get install g++-4.4-arm-linux-gnueabi gcc-4.4-arm-linux-gnueabi
         field_transfer_single($pkg, $fields);
     }
 
-## Download and prepare Linux Kernel sources
+## Download and prepare Linux kernel sources
 
 ```sh
 wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.8.9.tar.xz
@@ -81,7 +81,7 @@ patch -p1 < 0002-block-introduce-the-BFQ-v6-I-O-sched-for-3.8.patch
 patch -p1 < patch-3.8-ck1
 ```
 
-## Build Linux Kernel
+## Build Linux kernel
 
 ```sh
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- EXTRAVERSION=-huuhaa KDEB_PKGVERSION=1.0 KBUILD_DEBARCH=armel deb-pkg
