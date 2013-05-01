@@ -3,6 +3,7 @@ debian_squeeze_stora_kernel
 
 Vanilla Linux kernel for Netgear Stora.
 
+* AUFS3 support.
 * BFS and -ck patchsets for linux-3.8
 * BFQ disk scheduler.
 * NOOP I/O scheduler by default.
