@@ -20,8 +20,6 @@
 #include <linux/gpio.h>
 #include <linux/gpio_keys.h>
 #include <linux/leds.h>
-#include <linux/platform_data/mmc-mvsdio.h>
-#include <linux/version.h>
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <mach/kirkwood.h>
@@ -29,7 +27,6 @@
 #include "common.h"
 #include "mpp.h"
 
-#define SZ_6M                           0x00600000
 #define MACH_TYPE_NETGEAR_MS2110        2743
 
 #ifdef CONFIG_MACH_NETGEAR_MS2110
@@ -52,7 +49,7 @@ static struct mtd_partition netgear_ms2110_nand_parts[] = {
 	}, {
 		.name = "uImage",
 		.offset = MTDPART_OFS_NXTBLK,
-		.size = SZ_6M
+		.size = SZ_4M + SZ_2M
 	}, {
 		.name = "root",
 		.offset = MTDPART_OFS_NXTBLK,
