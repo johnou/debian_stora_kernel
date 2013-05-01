@@ -3,6 +3,7 @@ debian_squeeze_stora_kernel
 
 Vanilla Linux kernel for Netgear Stora.
 
+* AUFS3 support.
 * BFS and -ck patchsets for linux-3.8
 * BFQ disk scheduler.
 * NOOP I/O scheduler by default.
@@ -43,22 +44,7 @@ apt-get install g++-4.4-arm-linux-gnueabi gcc-4.4-arm-linux-gnueabi
     } elsif (m/^Architecture$/) {
         my $host_arch = get_host_arch();
         $fields->{$_} = $v;
-        #if (debarch_eq('all', $v)) {
-        #    $fields->{$_} = $v;
-        #} else {
-        #    my @archlist = split(/\s+/, $v);
-        #    my @invalid_archs = grep m/[^\w-]/, @archlist;
-        #    warning(ngettext("`%s' is not a legal architecture string.",
-        #                    "`%s' are not legal architecture strings.",
-        #                    scalar(@invalid_archs)),
-        #           join("' `", @invalid_archs))
-        #       if @invalid_archs >= 1;
-        #    grep(debarch_is($host_arch, $_), @archlist) ||
-        #       error(_g("current host architecture '%s' does not " .
-        #                "appear in package's architecture list (%s)"),
-        #             $host_arch, "@archlist");
-        #    $fields->{$_} = $host_arch;
-        #}
+        # validation removed.. :)
     } else {
         field_transfer_single($pkg, $fields);
     }
