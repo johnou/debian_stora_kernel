@@ -65,7 +65,15 @@ patch -p1 < 0001-Support-for-Netgear-Stora.patch
 git clone git://aufs.git.sourceforge.net/gitroot/aufs/aufs3-standalone.git
 cd aufs3-standalone/
 git checkout origin/aufs3.8
-..
+rm include/uapi/linux/Kbuild 
+cp -rp *.patch ../
+cp -rp fs ../
+cp -rp Documentation/ ../
+cp -rp include/ ../
+cd ..
+patch -p1 < aufs3-kbuild.patch
+patch -p1 < aufs3-base.patch
+patch -p1 < aufs3-standalone.patch
 ```
 
 ### BFQ
